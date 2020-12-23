@@ -1,0 +1,200 @@
+html, body {
+    background: #212335;
+}
+
+.navbar {
+    background: linear-gradient(180deg, rgba(73, 163, 253, 0.16) 0%, rgba(73, 163, 253, 0) 100%), linear-gradient(90deg, #212335 17.54%, rgba(33, 35, 53, 0.64) 51.46%, #212335 82.67%), url('../img/background_competitive.png'), #212335;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 2px 2px 0px 0px;
+    min-height: 128px;
+}
+
+.navbar-toggler {
+    padding: 0;
+}
+
+.player-avatar {
+    background: #161724;
+    border-radius: 48px;
+    border: 2px solid #9CC00C;
+}
+
+.player-nickname {
+    margin-left: 10px;
+}
+
+.player-id {
+    position: relative;
+    top: 25px;
+    right: 130px;
+    color: rgba(255, 255, 255, 0.48);
+}
+
+.player-expertise {
+
+}
+
+.player-expertise .progress-bar {
+    margin-left: calc(50vw - 510px);
+    margin-right: auto;
+    overflow: hidden;
+    width: 480px;
+    height: 16px;
+}
+
+.featured-medal {
+    width: 60px;
+    height: 80px;
+    background: linear-gradient(180deg, rgba(89, 104, 248, 0) 50%, rgba(89, 104, 248, 0.16) 98.7%), #1C1D2C;
+    border: 1px solid #49A3FD;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.24);
+    border-radius: 2px;
+}
+
+.featured-medal img {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed #49A3FD;
+}
+
+main {
+    margin-top: 128px;
+    background: #212335;
+    box-shadow: inset 0px 4px 16px rgba(0, 0, 0, 0.16);
+}
+
+.section-title,
+.card-subtitle {
+    text-transform: uppercase;
+}
+
+.col-border {
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-outline-success {
+    color: #9CC00C;
+    border-color: #9CC00C;
+}
+
+.btn-outline-success:hover,
+.btn-outline-success:active,
+.btn-outline-success:focus {
+    background: #9CC00C;
+    color: #ffffff;
+}
+
+.btn-warning {
+    color: #000000;
+    font-weight: bold;
+    background: #FACF5A;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16), 0px 4px 8px rgba(0, 0, 0, 0.16), inset 0px 1px 0px rgba(255, 255, 255, 0.24);
+    border-radius: 2px;
+}
+
+.btn-info {
+    font-weight: bold;
+    background: #2196FD;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16), 0px 4px 8px rgba(0, 0, 0, 0.16), inset 0px 1px 0px rgba(255, 255, 255, 0.24);
+    border-radius: 2px;
+}
+
+.btn-secondary {
+    background: #383B51;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16), 0px 4px 8px rgba(0, 0, 0, 0.16), inset 0px 1px 0px rgba(255, 255, 255, 0.24);
+    border-radius: 2px;
+    text-transform: uppercase;
+}
+
+footer {
+    background: #212335;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0px 0px 2px 2px;
+}
+
+.dropdown-menu {
+    background: #383B51;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-sizing: border-box;
+    box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.24), 0px 8px 16px rgba(0, 0, 0, 0.24);
+    border-radius: 2px;
+}
+
+.dropdown-item:hover,
+.dropdown-item:active,
+.dropdown-item:focus {
+    background-color: #5C636A;
+}
+
+.text-white {
+    color: #ffffff;
+}
+
+.text-blue {
+    color: #2196FD;
+}
+
+.text-red {
+    color: #FB4B56;
+}
+
+/* Media queries */
+@media (max-width: 992px) {
+    .navbar {
+        min-height: auto;
+    }
+
+    .navbar-brand {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .navbar-collapse {
+        margin-top: 35px;
+        text-align: center;
+    }
+
+    main {
+        margin-top: 74px;
+    }
+
+    .featured-medal {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+    
+    .player-expertise {
+        margin: 0;
+    }
+
+    footer {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .footer-reports {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .col-border {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+}
+
+@media (max-width: 500px) {
+    .player-expertise {
+        width: calc(100vw - 25px);
+    }
+}
