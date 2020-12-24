@@ -223,8 +223,10 @@ footer {
 }
 
 .toast {
-    position: absolute;
+    position: fixed;
+    z-index: 1;
     left: 12px;
+    bottom: 12px;
 }
 
 /* Media queries */
@@ -264,6 +266,10 @@ footer {
 
     .footer-reports {
         margin-top: 20px;
+    }
+
+    .footer-reports .card-group {
+        text-align: center !important;
     }
 }
 
