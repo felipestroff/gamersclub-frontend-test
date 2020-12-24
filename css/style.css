@@ -16,6 +16,8 @@ html, body {
 }
 
 .player-avatar {
+    width: 48px;
+    height: 48px;
     background: #161724;
     border-radius: 48px;
     border: 2px solid #9CC00C;
@@ -53,6 +55,13 @@ html, body {
     box-sizing: border-box;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16), inset 0px 1px 0px rgba(255, 255, 255, 0.24);
     border-radius: 16px;
+}
+
+.player-expertise-label {
+    position: absolute;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-size: 16px;
 }
 
 .featured-medal {
@@ -118,6 +127,12 @@ main {
     border-color: #9CC00C;
 }
 
+.btn-success {
+    background: #9CC00C;
+    border-color: #9CC00C;
+    color: #ffffff;
+}
+
 .btn-outline-success:hover,
 .btn-outline-success:active,
 .btn-outline-success:focus {
@@ -173,6 +188,10 @@ footer {
     background-color: #5C636A;
 }
 
+.dropdown-item.active {
+    background-color: #212335;
+}
+
 .text-white {
     color: #ffffff;
 }
@@ -183,6 +202,29 @@ footer {
 
 .text-red {
     color: #FB4B56;
+}
+
+.modal-content {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.modal-header {
+    background: #282A3E;
+    border: none;
+}
+
+.modal-body {
+    background: #212335;
+}
+
+.modal-footer {
+    background: #212335;
+    border-color: rgba(255, 255, 255, 0.16);
+}
+
+.toast {
+    position: absolute;
+    left: 12px;
 }
 
 /* Media queries */

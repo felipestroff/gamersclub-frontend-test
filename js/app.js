@@ -12,7 +12,34 @@ var app = new Vue({
         player: {},
         ranked: {},
         reports: {},
-        tournaments: {}
+        tournaments: {},
+        ranks: [
+            {
+                name: 'Casual',
+                minScore: 0,
+                maxScore: 25
+            },
+            {
+                name: 'Competitivo',
+                minScore: 26,
+                maxScore: 50
+            },
+            {
+                name: 'Amador',
+                minScore: 51,
+                maxScore: 75
+            },
+            {
+                name: 'Pro',
+                minScore: 76,
+                maxScore: 100
+            }
+        ],
+        modal: {},
+        toast: {
+            el: null,
+            msg: ''
+        }
     },
     created() {
         console.log('Vue created !');
@@ -53,7 +80,30 @@ var app = new Vue({
                 self.tournaments = json.data.tournaments;
             });
         },
-        toggleBanned: function () {
+        openAvatarModal: function (e) {
+            this.modal = new bootstrap.Modal(document.getElementById('modalAvatar'), {
+                keyboard: false
+            });
+            this.modal.show();
+        },
+        changeAvatar: function (e) {
+            e.preventDefault();
+
+            const url = URL.createObjectURL(avatarInput.files[0]);
+
+            this.player.avatar = url;
+
+            this.modal.hide();
+
+            this.toast.el = new bootstrap.Toast(document.getElementById('toast'));
+            this.toast.msg = 'Avatar alterado com sucesso!';
+            this.toast.el.show();
+
+            e.target.reset();
+        },
+        toggleBanned: function (e) {
+            e.target.classList.toggle('active');
+
             document.getElementsByClassName('banned')[0].classList.toggle('d-none');
         }
     }
