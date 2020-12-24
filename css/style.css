@@ -32,15 +32,21 @@ html, body {
 }
 
 .player-expertise {
-
+    margin-left: calc(50vw - 510px);
+    margin-right: auto;
+    width: 480px;
+    height: 16px;
+    background: #1C1D2C;
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.04), inset 0px 2px 4px rgba(0, 0, 0, 0.16);
+    border-radius: 16px;
 }
 
 .player-expertise .progress-bar {
-    margin-left: calc(50vw - 510px);
-    margin-right: auto;
-    overflow: hidden;
-    width: 480px;
-    height: 16px;
+    background: linear-gradient(90deg, #49A3FD 0%, #61B3FA 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16), inset 0px 1px 0px rgba(255, 255, 255, 0.24);
+    border-radius: 16px;
 }
 
 .featured-medal {
@@ -68,6 +74,21 @@ main {
 .section-title,
 .card-subtitle {
     text-transform: uppercase;
+}
+
+.tournaments-progress {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-sizing: border-box;
+    border-radius: 16px;
+}
+
+.tournaments-progress .progress-bar {
+    background: linear-gradient(90deg, #5968F8 0%, #49A3FD 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16), inset 0px 1px 0px rgba(255, 255, 255, 0.24);
+    border-radius: 16px;
 }
 
 .col-border {

@@ -38,7 +38,10 @@
                             <div class="progress-bar" role="progressbar"
                                 v-bind:aria-valuenow="player.expertise"
                                 aria-valuemin="0"
-                                aria-valuemax="100">
+                                aria-valuemax="100"
+                                v-bind:style="{
+                                    width: (player.expertise)*100/(100) + '%'
+                                }">
                             </div>
                         </div>
     
@@ -85,11 +88,16 @@
                                         {{ tournaments.nextTournament.currentTeams }}/{{ tournaments.nextTournament.maxTeams }}
                                     </small>
 
-                                    <input type="range" class="form-range"
-                                        v-bind:value="tournaments.nextTournament.currentTeams"
-                                        min="0" v-bind:max="tournaments.nextTournament.maxTeams"
-                                        disabled
-                                    >
+                                    <div class="tournaments-progress progress">
+                                        <div class="progress-bar" role="progressbar"
+                                            v-bind:aria-valuenow="tournaments.nextTournament.currentTeams"
+                                            aria-valuemin="0"
+                                            v-bind:aria-valuemax="tournaments.nextTournament.maxTeams"
+                                            v-bind:style="{
+                                                width: (tournaments.nextTournament.currentTeams)*100/(tournaments.nextTournament.maxTeams) + '%'
+                                            }">
+                                        </div>
+                                    </div>
                                 </p>
                             </div>
                         </div>
