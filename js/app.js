@@ -13,32 +13,11 @@ var app = new Vue({
         ranked: {},
         reports: {},
         tournaments: {},
-        ranks: [
-            {
-                name: 'Casual',
-                minScore: 0,
-                maxScore: 25
-            },
-            {
-                name: 'Competitivo',
-                minScore: 26,
-                maxScore: 50
-            },
-            {
-                name: 'Amador',
-                minScore: 51,
-                maxScore: 75
-            },
-            {
-                name: 'Pro',
-                minScore: 76,
-                maxScore: 100
-            }
-        ],
         modal: {},
         toast: {
             el: null,
-            msg: ''
+            msg: '',
+            class: ''
         }
     },
     created() {
@@ -81,27 +60,47 @@ var app = new Vue({
             });
         },
         openAvatarModal: function (e) {
+            console.log('Avatar modal opened:', e);
+
             this.modal = new bootstrap.Modal(document.getElementById('modalAvatar'), {
                 keyboard: false
             });
             this.modal.show();
         },
         changeAvatar: function (e) {
+            console.log('Change avatar action:', e);
+
             e.preventDefault();
 
-            const url = URL.createObjectURL(avatarInput.files[0]);
+            var self = this;
 
-            this.player.avatar = url;
+            const avatarFile = avatarInput.files[0];
 
-            this.modal.hide();
+            console.log('Avatar input file:', avatarFile);
 
-            this.toast.el = new bootstrap.Toast(document.getElementById('toast'));
-            this.toast.msg = 'Avatar alterado com sucesso!';
-            this.toast.el.show();
+            if (avatarFile.type.includes('image/')) {
+                const url = URL.createObjectURL(avatarFile);
+
+                self.player.avatar = url;
+
+                self.modal.hide();
+
+                self.toast.msg = 'Avatar alterado com sucesso!';
+                self.toast.class= 'btn-success'; 
+            }
+            else {
+                self.toast.msg = 'Tipo de arquivo inválido!';
+                self.toast.class= 'btn-warning';
+            }
+
+            self.toast.el = new bootstrap.Toast(document.getElementById('toast'));
+            self.toast.el.show();
 
             e.target.reset();
         },
         toggleBanned: function (e) {
+            console.log('Toggle banned action:', e);
+
             e.target.classList.toggle('active');
 
             document.getElementsByClassName('banned')[0].classList.toggle('d-none');

@@ -9,6 +9,7 @@ html, body {
     background-position: center;
     border-radius: 2px 2px 0px 0px;
     min-height: 128px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .navbar-toggler {
@@ -62,6 +63,10 @@ html, body {
     text-transform: uppercase;
     color: #ffffff;
     font-size: 16px;
+}
+
+.player-rank {
+    position: relative;
 }
 
 .featured-medal {
