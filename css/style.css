@@ -62,11 +62,16 @@ html, body {
     border-radius: 16px;
 }
 
-.player-expertise-label {
+.player-expertise-title {
     position: absolute;
     text-transform: uppercase;
-    color: #ffffff;
+    font-family: 'Teko', sans-serif;
     font-size: 16px;
+    color: #ffffff;
+}
+
+.player-expertise-title span {
+    margin-right: 5px;
 }
 
 .player-rank {
@@ -301,6 +306,10 @@ footer {
     
     .player-expertise {
         margin: 0 auto;
+    }
+
+    .player-expertise-title {
+        display: none;
     }
 
     footer {
