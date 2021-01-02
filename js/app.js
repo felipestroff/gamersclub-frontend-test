@@ -59,6 +59,21 @@ var app = new Vue({
             console.log('Avatar input file:', avatarFile);
 
             if (avatarFile.type.includes('image/')) {
+                const form = new FormData(e.target);
+
+                fetch('./server/AvatarUpload.php', {
+                    method: 'POST',
+                    body: form
+                })
+                .then(function(response) {
+                    console.log('Avatar upload response:', response);
+
+                    return response.json();
+                })
+                .then(function(json) {
+                    console.log('Avatar upload json:', json);
+                });
+
                 const url = URL.createObjectURL(avatarFile);
 
                 self.result.player.avatar = url;
