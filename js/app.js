@@ -5,14 +5,7 @@ var app = new Vue({
         api: {
             url: 'https://5ee78effffee0c0016a1248e.mockapi.io/api/v1/lizzy',
         },
-        anticheat: {},
-        config: {},
-        featuredMedal: {},
-        lobby: {},
-        player: {},
-        ranked: {},
-        reports: {},
-        tournaments: {},
+        result: null,
         modal: {},
         toast: {
             el: null,
@@ -30,12 +23,6 @@ var app = new Vue({
 
         document.getElementsByTagName('body')[0].classList.remove('d-none');
     },
-    beforeUpdate() {
-        console.log('Vue updating...');
-    },
-    updated() {
-        console.log('Vue updated !');
-    },
     methods: {
         login: function () {
             var self = this;
@@ -49,14 +36,7 @@ var app = new Vue({
             .then(function(json) {
                 console.log('API fetch json:', json);
 
-                self.anticheat = json.data.anticheat;
-                self.config = json.data.config;
-                self.featuredMedal = json.data.featuredMedal;
-                self.lobby = json.data.lobby;
-                self.player = json.data.player;
-                self.ranked = json.data.ranked;
-                self.reports = json.data.reports;
-                self.tournaments = json.data.tournaments;
+                self.result = json.data;
             });
         },
         openAvatarModal: function (e) {

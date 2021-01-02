@@ -18,7 +18,7 @@
 </head>
 
 <body class="d-none">
-    <div id="app">
+    <div id="app" v-if="result">
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
                 <div class="container-fluid">
@@ -28,27 +28,27 @@
                         aria-controls="navbarMobileContent"
                         aria-expanded="false"
                         aria-label="Alterar navegação">
-                        <img v-bind:src="player.avatar"
+                        <img v-bind:src="result.player.avatar"
                             class="player-avatar img-thumbnail d-inline-block align-top"
                         >
-                        <span class="player-nickname text-white">{{ player.nickname }}</span>
-                        <small class="player-id">ID: {{ player.id }}</small>
+                        <span class="player-nickname text-white">{{ result.player.nickname }}</span>
+                        <small class="player-id">ID: {{ result.player.id }}</small>
                     </a>
 
                     <div class="collapse navbar-collapse justify-content-md-start" id="navbarMobileContent">
                         <div class="player-expertise progress">
                             <div class="progress-bar" role="progressbar"
-                                v-bind:aria-valuenow="player.expertise"
+                                v-bind:aria-valuenow="result.player.expertise"
                                 aria-valuemin="0"
                                 aria-valuemax="100"
                                 v-bind:style="{
-                                    width: (player.expertise)*100/(100) + '%'
+                                    width: (result.player.expertise)*100/(100) + '%'
                                 }">
                             </div>
                         </div>
     
                         <div class="featured-medal">
-                            <img v-bind:src="featuredMedal.image" alt="Medalha" width="56">
+                            <img v-bind:src="result.featuredMedal.image" alt="Medalha" width="56">
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M3 1.5H2.25V0H15.75V1.5H15V3H17.625V10.1852L14.978 11.6978C14.7532 13.9729 12.8342 15.75 10.5 15.75H9.75V18H12.75V19.5H5.25V18H8.25V15.75H7.5C5.17548 15.75 3.26262 13.9875 3.02487 11.726L0 10.2135V3H3V1.5ZM4.5 1.5V11.25C4.5 12.9069 5.84315 14.25 7.5 14.25H10.5C12.1569 14.25 13.5 12.9069 13.5 11.25V1.5H4.5ZM3 4.5H1.5V9.28647L3 10.0365V4.5ZM15 9.95761L16.125 9.31476V4.5H15V9.95761Z" fill="#9CC00C"/>
                             </svg>
 
-                            {{ tournaments.label }}
+                            {{ result.tournaments.label }}
                         </h5>
 
                         <div class="tournaments-card card text-white mt-4">
@@ -75,23 +75,23 @@
                                 </a>
 
                                 <h6 class="card-subtitle text-white mt-3">
-                                    {{ tournaments.nextTournament.name }}
+                                    {{ result.tournaments.nextTournament.name }}
                                 </h6>
 
                                 <p class="card-text mt-3">
                                     <small>Times Inscritos</small>
 
                                     <small class="float-end">
-                                        {{ tournaments.nextTournament.currentTeams }}<span style="color: #8F909B;">/{{ tournaments.nextTournament.maxTeams }}</span>
+                                        {{ result.tournaments.nextTournament.currentTeams }}<span style="color: #8F909B;">/{{ result.tournaments.nextTournament.maxTeams }}</span>
                                     </small>
 
                                     <div class="tournaments-progress progress">
                                         <div class="progress-bar" role="progressbar"
-                                            v-bind:aria-valuenow="tournaments.nextTournament.currentTeams"
+                                            v-bind:aria-valuenow="result.tournaments.nextTournament.currentTeams"
                                             aria-valuemin="0"
-                                            v-bind:aria-valuemax="tournaments.nextTournament.maxTeams"
+                                            v-bind:aria-valuemax="result.tournaments.nextTournament.maxTeams"
                                             v-bind:style="{
-                                                width: (tournaments.nextTournament.currentTeams)*100/(tournaments.nextTournament.maxTeams) + '%'
+                                                width: (result.tournaments.nextTournament.currentTeams)*100/(result.tournaments.nextTournament.maxTeams) + '%'
                                             }">
                                         </div>
                                     </div>
@@ -106,7 +106,7 @@
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M2.25 0.25H15.75V15.25H18V16.75H15.1912L7.10914 21.1584L6 20.5V5.05477L12.0588 1.75H3.75V16.75H0V15.25H2.25V0.25ZM14.25 2.26341L7.5 5.94522V19.2366L14.25 15.5548V2.26341ZM9 11.5V10H10.5V11.5H9Z" fill="#FACF5A"/>
                             </svg>   
 
-                            {{ lobby.label }}
+                            {{ result.lobby.label }}
                         </h5>
 
                         <div class="card-group text-center mt-4">
@@ -115,7 +115,7 @@
                                     <h4 class="card-title"
                                         style="color: #FACF5A; font-size: 36px;"
                                     >
-                                        {{ lobby.matches }}
+                                        {{ result.lobby.matches }}
                                     </h4>
 
                                     <h6 class="card-subtitle text-white mb-2">
@@ -129,7 +129,7 @@
                                     <h4 class="card-title"
                                         style="color: #9CC00C; font-size: 36px;"
                                     >
-                                        {{ lobby.wins }}
+                                        {{ result.lobby.wins }}
                                     </h4>
 
                                     <h6 class="card-subtitle text-white mb-2">
@@ -143,7 +143,7 @@
                                     <h4 class="card-title"
                                         style="color: #FC6973; font-size: 36px;"
                                     >
-                                        {{ lobby.losses }}
+                                        {{ result.lobby.losses }}
                                     </h4>
 
                                     <h6 class="card-subtitle text-white mb-2">
@@ -155,13 +155,13 @@
 
                         <div class="d-grid gap-2 mt-4">
                             <a type="button" class="btn btn-warning btn-block"
-                                v-bind:href="lobby.action.link" target="_blank"  
+                                v-bind:href="result.lobby.action.link" target="_blank"  
                             >
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M16.6893 10.75L0.5 10.75L0.5 9.25L16.6893 9.25L8.96967 1.53033L10.0303 0.469673L19.5607 10L10.0303 19.5303L8.96967 18.4697L16.6893 10.75Z" fill="black"/>
                                 </svg>
                                 
-                                {{ lobby.action.label }}
+                                {{ result.lobby.action.label }}
                             </a>
                         </div>
                     </div>
@@ -172,7 +172,7 @@
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M2.25001 0.25H15.75V4.31066L13.3972 6.66352L12.1685 5.77085L14.25 3.68934V1.75H10.5V4.55863L9.00001 3.46881L7.50001 4.55863V1.75H3.75001V3.68934L5.83153 5.77085L4.60287 6.66352L2.25001 4.31066V0.25ZM9.00001 9.25L10.3225 11.9297L13.2798 12.3594L11.1399 14.4453L11.645 17.3906L9.00001 16L6.35498 17.3906L6.86014 14.4453L4.72026 12.3594L7.6775 11.9297L9.00001 9.25ZM9.00001 5.32295L0.985413 11.1459L4.04672 20.5676H13.9533L17.0146 11.1459L9.00001 5.32295ZM5.13653 19.0676L2.74877 11.7188L9.00001 7.17705L15.2513 11.7188L12.8635 19.0676H5.13653Z" fill="#2196FD"/>
                             </svg>
 
-                            {{ ranked.label }}
+                            {{ result.ranked.label }}
                         </h5>
 
                         <div class="card-group text-center mt-4">
@@ -181,7 +181,7 @@
                                     <h4 class="card-title text-blue"
                                         style="font-size: 36px;"
                                     >
-                                        {{ ranked.matches }}
+                                        {{ result.ranked.matches }}
                                     </h4>
 
                                     <h6 class="card-subtitle text-white mb-2">
@@ -195,7 +195,7 @@
                                     <h4 class="card-title"
                                         style="color: #9CC00C; font-size: 36px;"
                                     >
-                                        {{ ranked.wins }}
+                                        {{ result.ranked.wins }}
                                     </h4>
 
                                     <h6 class="card-subtitle text-white mb-2">
@@ -209,7 +209,7 @@
                                     <h4 class="card-title"
                                         style="color: #FC6973; font-size: 36px;"
                                     >
-                                        {{ ranked.losses }}
+                                        {{ result.ranked.losses }}
                                     </h4>
 
                                     <h6 class="card-subtitle text-white mb-2">
@@ -221,14 +221,14 @@
 
                         <div class="d-grid gap-2 mt-4">
                             <a type="button" class="btn btn-info btn-block text-white"
-                                v-bind:href="ranked.action.link" target="_blank"  
+                                v-bind:href="result.ranked.action.link" target="_blank"  
                             >
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M7 1.75C5.2315 1.75 3.75 3.24702 3.75 5.15385C3.75 7.06067 5.2315 8.55769 7 8.55769C8.7685 8.55769 10.25 7.06067 10.25 5.15385C10.25 3.24702 8.7685 1.75 7 1.75ZM10.2516 8.72898C11.1768 7.83013 11.75 6.55461 11.75 5.15385C11.75 2.47246 9.64978 0.25 7 0.25C4.35022 0.25 2.25 2.47246 2.25 5.15385C2.25 6.55461 2.82316 7.83013 3.7484 8.72898C1.71828 9.29843 0.25 11.2196 0.25 13.4615V19.75H13.75V13.4615C13.75 11.2196 12.2817 9.29843 10.2516 8.72898ZM5 10.0577C3.2315 10.0577 1.75 11.5547 1.75 13.4615V18.25H12.25V13.4615C12.25 11.5547 10.7685 10.0577 9 10.0577H5Z" fill="white"/>
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M16.25 5.15385C16.25 3.24702 14.7685 1.75 13 1.75V0.25C15.6498 0.25 17.75 2.47246 17.75 5.15385C17.75 6.55461 17.1768 7.83013 16.2516 8.72898C18.2817 9.29843 19.75 11.2196 19.75 13.4615V19.75H16V18.25H18.25V13.4615C18.25 11.5547 16.7685 10.0577 15 10.0577H13V8.55769C14.7685 8.55769 16.25 7.06067 16.25 5.15385Z" fill="white"/>
                                 </svg>                                        
                                 
-                                {{ ranked.action.label }}
+                                {{ result.ranked.action.label }}
                             </a>
                         </div>
                     </div>
@@ -256,7 +256,7 @@
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M14.75 0.75V3.75H11.75V5.25H14.75V8.25H16.25V5.25H19.25V3.75H16.25V0.75H14.75ZM8 1.5C8.73816 1.5 9.44073 1.65234 10.078 1.9273C9.86412 2.37727 9.70459 2.85808 9.60792 3.36125C9.12062 3.12962 8.57545 3 8 3C5.92893 3 4.25 4.67893 4.25 6.75C4.25 8.82107 5.92893 10.5 8 10.5C9.35984 10.5 10.5506 9.77619 11.2081 8.69283C11.5599 9.05287 11.9566 9.36882 12.3892 9.63161C12.1412 10.0086 11.8459 10.3518 11.5118 10.6526C13.8018 11.2176 15.5 13.2855 15.5 15.75V21.75V22.5H14.75H1.25H0.5V21.75V15.75C0.5 13.2855 2.19817 11.2176 4.48822 10.6526C3.421 9.69165 2.75 8.29918 2.75 6.75C2.75 3.8505 5.1005 1.5 8 1.5ZM8 12H5.75C3.67893 12 2 13.6789 2 15.75V21H14V15.75C14 13.6789 12.3211 12 10.25 12H8Z" fill="white"/>
                                     </svg>                                        
 
-                                    {{ config[0].label }}
+                                    {{ result.config[0].label }}
                                 </a>
                             </li>
 
@@ -266,24 +266,24 @@
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M18.7095 3.35109L20.0303 2.0303L18.9697 0.969635L17.4787 2.46062C15.9362 1.47042 14.0951 0.75 12 0.75C8.47113 0.75 5.66311 2.79377 3.78838 4.72802C2.84253 5.70389 2.10925 6.67702 1.61237 7.40552C1.36346 7.77046 1.17266 8.07582 1.04303 8.29186C0.978188 8.39993 0.928569 8.4858 0.894561 8.54576C0.877554 8.57574 0.864443 8.59926 0.855277 8.61586L0.844489 8.6355L0.841324 8.64133L0.839928 8.64391L0.648186 9L0.839649 9.35558L0.841324 9.35867L0.844489 9.3645L0.855277 9.38414C0.864443 9.40074 0.877554 9.42426 0.894561 9.45424C0.928569 9.5142 0.978188 9.60007 1.04303 9.70814C1.17266 9.92418 1.36346 10.2295 1.61237 10.5945C2.10925 11.323 2.84253 12.2961 3.78838 13.272C4.23666 13.7345 4.73831 14.2033 5.29043 14.6489L3.96967 15.9696L5.03033 17.0303L6.52128 15.5393C8.06378 16.5296 9.90484 17.25 12 17.25C15.5289 17.25 18.3369 15.2062 20.2116 13.272C21.1575 12.2961 21.8908 11.323 22.3876 10.5945C22.6365 10.2295 22.8273 9.92418 22.957 9.70814C23.0218 9.60007 23.0714 9.5142 23.1054 9.45424C23.1225 9.42426 23.1356 9.40074 23.1447 9.38414L23.1555 9.3645L23.1587 9.35867L23.1601 9.35609L23.3518 9L23.1601 8.64391L23.1587 8.64133L23.1555 8.6355L23.1447 8.61586C23.1356 8.59926 23.1225 8.57574 23.1054 8.54576C23.0714 8.4858 23.0218 8.39993 22.957 8.29186C22.8273 8.07582 22.6365 7.77046 22.3876 7.40552C21.8908 6.67702 21.1575 5.70389 20.2116 4.72802C19.7633 4.26549 19.2617 3.7967 18.7095 3.35109ZM2.36767 9C2.48293 9.18973 2.645 9.4464 2.85158 9.74927C3.31383 10.427 3.99401 11.3289 4.86548 12.228C5.31869 12.6956 5.81713 13.156 6.35755 13.5818L8.33193 11.6074C7.80809 10.8718 7.5 9.97186 7.5 9C7.5 6.51472 9.51472 4.5 12 4.5C12.9719 4.5 13.8718 4.80809 14.6074 5.33192L16.3898 3.54953C15.0988 2.77368 13.6247 2.25 12 2.25C9.06733 2.25 6.62535 3.95623 4.86548 5.77198C3.99401 6.67111 3.31383 7.57298 2.85158 8.25073C2.645 8.5536 2.48293 8.81027 2.36767 9ZM17.6424 4.41821L15.668 6.39258C16.1919 7.1282 16.5 8.02812 16.5 9C16.5 11.4853 14.4853 13.5 12 13.5C11.0281 13.5 10.1282 13.1919 9.39258 12.668L7.61019 14.4504C8.90115 15.2263 10.3753 15.75 12 15.75C14.9327 15.75 17.3747 14.0438 19.1345 12.228C20.006 11.3289 20.6862 10.427 21.1484 9.74927C21.355 9.4464 21.5171 9.18973 21.6323 9C21.5171 8.81027 21.355 8.5536 21.1484 8.25073C20.6862 7.57298 20.006 6.67111 19.1345 5.77198C18.6813 5.30437 18.1828 4.84402 17.6424 4.41821ZM10.476 11.5846C10.9226 11.8485 11.4436 12 12 12C13.6569 12 15 10.6569 15 9C15 8.44363 14.8485 7.92264 14.5846 7.476L10.476 11.5846ZM13.524 6.41535C13.0773 6.15144 12.5563 6 12 6C10.3431 6 9 7.34315 9 9C9 9.55635 9.15145 10.0773 9.41535 10.524L13.524 6.41535ZM23.1601 8.64391L22.5 9C23.1604 8.64442 23.1601 8.64391 23.1601 8.64391ZM22.5 9L23.1601 9.35609C23.1601 9.35609 23.1604 9.35558 22.5 9ZM1.5 9L0.839928 8.64391C0.839928 8.64391 0.839649 8.64442 1.5 9Z" fill="white"/>
                                     </svg>                                                                               
 
-                                    {{ config[1].label }}
+                                    {{ result.config[1].label }}
                                 </a>
                             </li>
                         </ul>
 
-                        <a v-bind:href="anticheat.download" type="button" class="btn btn-secondary"
+                        <a v-bind:href="result.anticheat.download" type="button" class="btn btn-secondary"
                             style="margin-left: 5px; height: 40px;">
                             <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5303 14.2803L10 14.8107L9.46967 14.2803L3.46967 8.28033L4.53033 7.21967L9.25 11.9393V0.25H10.75V11.9393L15.4697 7.21967L16.5303 8.28033L10.5303 14.2803ZM0.25 13.75V18.25V19H1H19H19.75V18.25V13.75H18.25V17.5H1.75V13.75H0.25Z" fill="white"/>
                             </svg>                                
                             
-                            {{ anticheat.label }}
+                            {{ result.anticheat.label }}
                         </a>
                     </div>
 
                     <div class="footer-reports col-lg-6 justify-content-end">
                         <div class="card-group text-end">
-                            <div v-for="report in reports" :key="report.type"
+                            <div v-for="report in result.reports" :key="report.type"
                                 v-bind:class="report.type"
                                 class="card"
                                 style="background: transparent; border: none;">
