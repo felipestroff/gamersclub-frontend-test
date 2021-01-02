@@ -37,14 +37,6 @@ var app = new Vue({
                 console.log('API fetch json:', json);
 
                 self.result = json.data;
-
-                const storedAvatar = localStorage.getItem('avatar');
-
-                if (storedAvatar) {
-                    console.log('Stored avatar:', storedAvatar);
-
-                    self.result.player.avatar = storedAvatar;
-                }
             });
         },
         openAvatarModal: function (e) {
@@ -67,31 +59,14 @@ var app = new Vue({
             console.log('Avatar input file:', avatarFile);
 
             if (avatarFile.type.includes('image/')) {
-                const form = new FormData(e.target);
+                const url = URL.createObjectURL(avatarFile);
 
-                fetch('./server/AvatarUpload.php', {
-                    method: 'POST',
-                    body: form
-                })
-                .then(function(response) {
-                    console.log('Avatar upload response:', response);
+                self.result.player.avatar = url;
 
-                    return response.json();
-                })
-                .then(function(avatar) {
-                    console.log('Avatar uploaded:', avatar);
+                self.modal.hide();
 
-                    const url = `./uploads/avatars/${avatar.name}`;
-
-                    self.result.player.avatar = url;
-
-                    localStorage.setItem('avatar', self.result.player.avatar);
-
-                    self.modal.hide();
-
-                    self.toast.msg = 'Avatar alterado com sucesso!';
-                    self.toast.class= 'btn-success'; 
-                });
+                self.toast.msg = 'Avatar alterado com sucesso!';
+                self.toast.class= 'btn-success'; 
             }
             else {
                 self.toast.msg = 'Tipo de arquivo inválido!';
