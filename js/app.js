@@ -37,6 +37,10 @@ var app = new Vue({
                 console.log('API fetch json:', json);
 
                 self.result = json.data;
+
+                if (localStorage.getItem('avatar')) {
+                    self.result.player.avatar = localStorage.getItem('avatar');
+                }
             });
         },
         openAvatarModal: function (e) {
@@ -70,18 +74,20 @@ var app = new Vue({
 
                     return response.json();
                 })
-                .then(function(json) {
-                    console.log('Avatar upload json:', json);
+                .then(function(avatar) {
+                    console.log('Avatar uploaded:', avatar);
+
+                    const url = `./uploads/avatars/${avatar.name}`;
+
+                    self.result.player.avatar = url;
+
+                    localStorage.setItem('avatar', self.result.player.avatar);
+
+                    self.modal.hide();
+
+                    self.toast.msg = 'Avatar alterado com sucesso!';
+                    self.toast.class= 'btn-success'; 
                 });
-
-                const url = URL.createObjectURL(avatarFile);
-
-                self.result.player.avatar = url;
-
-                self.modal.hide();
-
-                self.toast.msg = 'Avatar alterado com sucesso!';
-                self.toast.class= 'btn-success'; 
             }
             else {
                 self.toast.msg = 'Tipo de arquivo inválido!';
