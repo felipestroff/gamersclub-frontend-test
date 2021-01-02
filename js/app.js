@@ -38,8 +38,12 @@ var app = new Vue({
 
                 self.result = json.data;
 
-                if (localStorage.getItem('avatar')) {
-                    self.result.player.avatar = localStorage.getItem('avatar');
+                const storedAvatar = localStorage.getItem('avatar');
+
+                if (storedAvatar) {
+                    console.log('Stored avatar:', storedAvatar);
+
+                    self.result.player.avatar = storedAvatar;
                 }
             });
         },
