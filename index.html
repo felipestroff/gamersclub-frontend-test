@@ -12,6 +12,8 @@
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
         crossorigin="anonymous"
     >
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Teko&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 
     <title>Gamers Club - Teste técnico: Frontend</title>
@@ -68,24 +70,24 @@
                             {{ result.tournaments.label }}
                         </h5>
 
-                        <div class="tournaments-card card text-white mt-4">
+                        <div class="tournaments-card card text-white mt-3">
                             <div class="card-body">
                                 <a type="button" class="card-link btn btn-outline-success btn-sm">
                                     Inscrições Abertas
                                 </a>
 
-                                <h6 class="card-subtitle text-white mt-3">
+                                <h6 class="card-subtitle text-white mt-3" style="font-size: 24px;">
                                     {{ result.tournaments.nextTournament.name }}
                                 </h6>
 
-                                <p class="card-text mt-3">
+                                <div class="card-text mt-3">
                                     <small>Times Inscritos</small>
 
                                     <small class="float-end">
                                         {{ result.tournaments.nextTournament.currentTeams }}<span style="color: #8F909B;">/{{ result.tournaments.nextTournament.maxTeams }}</span>
                                     </small>
 
-                                    <div class="tournaments-progress progress">
+                                    <div class="tournaments-progress progress mt-1">
                                         <div class="progress-bar" role="progressbar"
                                             v-bind:aria-valuenow="result.tournaments.nextTournament.currentTeams"
                                             aria-valuemin="0"
@@ -95,7 +97,7 @@
                                             }">
                                         </div>
                                     </div>
-                                </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -109,16 +111,16 @@
                             {{ result.lobby.label }}
                         </h5>
 
-                        <div class="card-group text-center mt-4">
+                        <div class="card-group mt-3">
                             <div class="matches-card card col-lg-4">
                                 <div class="card-body">
                                     <h4 class="card-title"
-                                        style="color: #FACF5A; font-size: 36px;"
+                                        style="color: #FACF5A;"
                                     >
                                         {{ result.lobby.matches }}
                                     </h4>
 
-                                    <h6 class="card-subtitle text-white mb-2">
+                                    <h6 class="card-subtitle text-white mb-4">
                                         Partidas
                                     </h6>
                                 </div>
@@ -127,12 +129,12 @@
                             <div class="matches-card card col-lg-4">
                                 <div class="card-body">
                                     <h4 class="card-title"
-                                        style="color: #9CC00C; font-size: 36px;"
+                                        style="color: #9CC00C;"
                                     >
                                         {{ result.lobby.wins }}
                                     </h4>
 
-                                    <h6 class="card-subtitle text-white mb-2">
+                                    <h6 class="card-subtitle text-white mb-4">
                                         Vitórias
                                     </h6>
                                 </div>
@@ -141,19 +143,19 @@
                             <div class="matches-card card col-lg-4">
                                 <div class="card-body">
                                     <h4 class="card-title"
-                                        style="color: #FC6973; font-size: 36px;"
+                                        style="color: #FC6973;"
                                     >
                                         {{ result.lobby.losses }}
                                     </h4>
 
-                                    <h6 class="card-subtitle text-white mb-2">
+                                    <h6 class="card-subtitle text-white mb-4">
                                         Derrotas
                                     </h6>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="d-grid gap-2 mt-4">
+                        <div class="d-grid gap-2">
                             <a type="button" class="btn btn-warning btn-block"
                                 v-bind:href="result.lobby.action.link" target="_blank"  
                             >
@@ -175,16 +177,14 @@
                             {{ result.ranked.label }}
                         </h5>
 
-                        <div class="card-group text-center mt-4">
+                        <div class="card-group mt-3">
                             <div class="matches-card card">
                                 <div class="card-body">
-                                    <h4 class="card-title text-blue"
-                                        style="font-size: 36px;"
-                                    >
+                                    <h4 class="card-title text-blue">
                                         {{ result.ranked.matches }}
                                     </h4>
 
-                                    <h6 class="card-subtitle text-white mb-2">
+                                    <h6 class="card-subtitle text-white mb-4">
                                         Partidas
                                     </h6>
                                 </div>
@@ -193,12 +193,12 @@
                             <div class="matches-card card">
                                 <div class="card-body">
                                     <h4 class="card-title"
-                                        style="color: #9CC00C; font-size: 36px;"
+                                        style="color: #9CC00C;"
                                     >
                                         {{ result.ranked.wins }}
                                     </h4>
 
-                                    <h6 class="card-subtitle text-white mb-2">
+                                    <h6 class="card-subtitle text-white mb-4">
                                         Vitórias
                                     </h6>
                                 </div>
@@ -207,19 +207,19 @@
                             <div class="matches-card card">
                                 <div class="card-body">
                                     <h4 class="card-title"
-                                        style="color: #FC6973; font-size: 36px;"
+                                        style="color: #FC6973;"
                                     >
                                         {{ result.ranked.losses }}
                                     </h4>
 
-                                    <h6 class="card-subtitle text-white mb-2">
+                                    <h6 class="card-subtitle text-white mb-4">
                                         Derrotas
                                     </h6>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="d-grid gap-2 mt-4">
+                        <div class="d-grid gap-2">
                             <a type="button" class="btn btn-info btn-block text-white"
                                 v-bind:href="result.ranked.action.link" target="_blank"  
                             >
@@ -272,7 +272,8 @@
                         </ul>
 
                         <a v-bind:href="result.anticheat.download" type="button" class="btn btn-secondary"
-                            style="margin-left: 5px; height: 40px;">
+                            style="margin-left: 5px; height: 40px;"
+                        >
                             <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5303 14.2803L10 14.8107L9.46967 14.2803L3.46967 8.28033L4.53033 7.21967L9.25 11.9393V0.25H10.75V11.9393L15.4697 7.21967L16.5303 8.28033L10.5303 14.2803ZM0.25 13.75V18.25V19H1H19H19.75V18.25V13.75H18.25V17.5H1.75V13.75H0.25Z" fill="white"/>
                             </svg>                                
@@ -286,39 +287,33 @@
                             <div v-for="report in result.reports" :key="report.type"
                                 v-bind:class="report.type"
                                 class="card"
-                                style="background: transparent; border: none;">
-                                <h5 class="card-title">
-                                    <span class="card-text"
-                                        v-bind:class="{
-                                            'text-blue': report.type === 'online',
-                                            'text-red': report.type === 'banned'
-                                        }"
-                                        style="
-                                            position: relative;
-                                            top: 10px;
-                                            right: 5px;
-                                        "
-                                    >
-                                        {{ report.total }}
-                                    </span>
+                                style="background: transparent; border: none;"
+                            >
+                                <span class="card-subtitle"
+                                    v-bind:class="{
+                                        'text-blue': report.type === 'online',
+                                        'text-red': report.type === 'banned'
+                                    }"
+                                    style="
+                                        position: relative;
+                                        top: 10px;
+                                        font-size: 24px;
+                                    "
+                                >
+                                    {{ report.total }}
+                                </span>
 
-                                    <span class="card-text text-white">
-                                        {{ report.label.split('**')[0] }}
-                                    </span>
+                                <span class="card-text text-white">
+                                    {{ report.label.split('**')[0] }}
+                                </span>
 
-                                    <br>
-
-                                    <span class="card-text"
-                                        v-bind:class="{
-                                            'text-blue': report.type === 'online',
-                                            'text-red': report.type === 'banned'
-                                        }"
-                                        style="
-                                            margin-left: 55px;
-                                        ">
-                                        {{ report.label.split('**')[1] }}
-                                    </span>
-                                </h5>
+                                <span class="card-text"
+                                    v-bind:class="{
+                                        'text-blue': report.type === 'online',
+                                        'text-red': report.type === 'banned'
+                                    }">
+                                    {{ report.label.split('**')[1] }}
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -337,8 +332,12 @@
                             <input id="avatarInput" class="form-control" type="file" accept="image/*" required>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                            <button type="submit" class="btn btn-success">Salvar</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                Fechar
+                            </button>
+                            <button type="submit" class="btn btn-success">
+                                Salvar
+                            </button>
                         </div>
                     </form>
                 </div>

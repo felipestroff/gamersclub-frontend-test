@@ -26,13 +26,17 @@ html, body {
 
 .player-nickname {
     margin-left: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
 }
 
 .player-id {
     position: relative;
-    top: 25px;
-    right: 130px;
+    top: 20px;
+    right: 115px;
     color: rgba(255, 255, 255, 0.48);
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
 }
 
 .player-expertise {
@@ -103,8 +107,26 @@ main {
 }
 
 .section-title,
+.modal-title {
+    text-transform: uppercase;
+    font-family: 'Teko', sans-serif;
+    font-size: 20px;
+}
+
+.card-title {
+    font-family: 'Teko', sans-serif;
+    font-size: 36px;
+}
+
 .card-subtitle {
     text-transform: uppercase;
+    font-family: 'Teko', sans-serif;
+    font-size: 16px;
+}
+
+.card-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
 }
 
 .tournaments-progress {
@@ -125,6 +147,12 @@ main {
 
 .col-border {
     border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn {
+    font-family: 'Teko', sans-serif;
+    font-size: 20px;
+    font-weight: normal !important;
 }
 
 .btn-outline-success {
@@ -187,6 +215,11 @@ footer {
     border-radius: 2px;
 }
 
+.dropdown-item {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
 .dropdown-item:hover,
 .dropdown-item:active,
 .dropdown-item:focus {
@@ -227,11 +260,17 @@ footer {
     border-color: rgba(255, 255, 255, 0.16);
 }
 
+.form-control {
+    font-family: 'Poppins', sans-serif;
+}
+
 .toast {
     position: fixed;
     z-index: 1;
     left: 12px;
     bottom: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
 }
 
 /* Media queries */

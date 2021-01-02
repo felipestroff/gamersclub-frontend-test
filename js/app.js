@@ -61,7 +61,7 @@ var app = new Vue({
             if (avatarFile.type.includes('image/')) {
                 const url = URL.createObjectURL(avatarFile);
 
-                self.player.avatar = url;
+                self.result.player.avatar = url;
 
                 self.modal.hide();
 
